@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${cliente.nombre}">Cliente</title>
+  <link rel="stylesheet" href="../../static/style.css" th:href="@{/style.css}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>        tailwind.config = { theme: { extend: { colors: { clifford: '#da373d', } } } }</script>
+</head>
+
+<body class="bg-slate-900 text-white">
+  <h1 class="text-4xl font-bold mt-8 text-center text-white">CRUD de Spring Boot - Grupo 3</h1>
+  <div class="flex justify-center items-center h-screen">
+    <div class="max-w-md px-6 py-8 bg-gray-800 rounded-md shadow-md">
+      <h1 class="text-4xl font-bold text-center mb-6" th:text="'Editar cliente: ' + ${cliente.nombre}"></h1>
+      <form th:action="@{/editar(id=${cliente.id})}" th:method="put" th:object="${cliente}">
+        <div class="mb-4">
+          <label for="nombre" class="text-white font-bold mb-2">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" th:value="${cliente.nombre}" class="w-full bg-gray-700 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div class="mb-4">
+          <label for="apellido" class="text-white font-bold mb-2">Apellidos:</label>
+          <input type="text" id="apellido" name="apellido" th:value="${cliente.apellido}" class="w-full bg-gray-700 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div class="mb-4">
+          <label for="correo" class="text-white font-bold mb-2">Correo:</label>
+          <input type="text" id="correo" name="correo" th:value="${cliente.correo}" class="w-full bg-gray-700 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div class="mb-6">
+          <label for="celular" class="text-white font-bold mb-2">Celular:</label>
+          <input type="text" id="celular" name="celular" th:value="${cliente.celular}" class="w-full bg-gray-700 text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        <div class="flex justify-center">
+          <input type="submit" value="Actualizar" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+
+</html>
